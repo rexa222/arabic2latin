@@ -94,10 +94,10 @@ def arabic_to_latin(text, debug=False):
                 result += MAPPING[text[c - 1]]
 
         # sokoon:
-        elif char in "ْ":
+        elif char == "ْ":
             no_vowel = True
 
-        elif char in "ـْ":
+        elif char == "ـْ":
             pass
 
         elif debug:
