@@ -104,10 +104,3 @@ def arabic_to_latin(text, debug=False):
             return f"unknown character: {char}"
 
     return result
-
-
-while True:
-    t = input("arabic text: ")
-    homophones = arabic_to_latin(t, debug=True)
-
-    print(homophones)
