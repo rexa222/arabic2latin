@@ -1,0 +1,25 @@
+[project]
+name = "arabic2latin"
+version = "1.0.0"
+description = "Convert Arabic characters to their Latin (English) homophones."
+readme = "README.md"
+requires-python = ">=3.6"
+license= {file = "LICENSE"}
+keywords=["arabic", "homophone", "arabic to english", "arabic to latin"]
+authors = [
+  {email = "rexa222@outlook.com"},
+  {name = "rexa222"}
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Software Development :: Libraries",
+  "Programming Language :: Python :: 3",
+  "Typing :: Typed"
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/rexa222/arabic2latin"
+"Bug Tracker" = "https://github.com/rexa222/arabic2latin/issues"
