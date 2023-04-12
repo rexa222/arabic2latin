@@ -11,8 +11,8 @@ def read_version():
 setup(
     name='arabic2latin',
     version=read_version(),
-    description='Convert Arabic characters to their Latin(English) homophones.',
-    author='rexa',
+    description='Convert Arabic characters to their Latin (English) homophones.',
+    author='rexa222',
     author_email='rexa222@outlook.com',
     packages=find_packages(include=['arabic2latin', 'arabic2latin.*']),
     install_requires=open('requirements.txt').readlines(),
