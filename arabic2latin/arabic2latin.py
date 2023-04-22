@@ -1,5 +1,3 @@
-import random
-
 MAPPING = {
     'أ': 'a', 'إ': 'e', 'ا': 'a', 'آ': 'aa', 'ب': 'b', 'پ': 'p', 'ت': 't', 'ث': 'th',
     'ج': 'j', 'ح': 'h', 'خ': 'kh', 'د': 'd', 'ذ': 'th', 'ر': 'r', 'ز': 'z',
@@ -57,7 +55,7 @@ def arabic_to_latin(text, debug=False):
                 elif text[c-1] in "اىيی" or text[c+1] in "اىيی":
                     if result[-1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                         if not no_vowel:
-                            result += random.choices(("e", "a"), weights=(1, 4))[0]
+                            result += "a"
                         else:
                             no_vowel = False
 
@@ -72,7 +70,7 @@ def arabic_to_latin(text, debug=False):
             else:
                 if result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                     if not no_vowel:
-                        result += random.choices(("e", "a"), weights=(1, 4))[0]
+                        result += "a"
                     else:
                         no_vowel = False
 
