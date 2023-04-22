@@ -84,7 +84,7 @@ def arabic_to_latin(text, debug=False):
                     else:
                         result += MAPPING[char]
 
-        elif char == " ":
+        elif ord(char) < 128:
             result += char
 
         # tashdid:
