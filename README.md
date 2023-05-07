@@ -6,14 +6,13 @@ Convert Arabic characters to their Latin (English) homophone.
 
 ## Installation
 
-Install from source:
-
-```bash
-pip install git+https://github.com/rexa222/arabic2latin
-```
-Alternatively, install from PyPI:
+Install from PyPI:
 ```bash
 pip install arabic2latin
+```
+Alternatively, install from source:
+```bash
+pip install git+https://github.com/rexa222/arabic2latin
 ```
 ## Usage/Examples
 
