@@ -45,14 +45,14 @@ def arabic_to_latin(text, debug=False):
                 result += "i"
 
             elif char == "و":
-                if text[c+1] in "اىيی" and (c == n-2 or "وا " in text[c:]):
+                if (c != n-1 and text[c+1] in "اىيی") and (c == n-2 or text[c:].startswith("وا ")):
                     if result[-1] == "o":
                         result += "o"
                     else:
                         result += "oo"
                     special_case = True
 
-                elif text[c-1] in "اىيی" or text[c+1] in "اىيی":
+                elif text[c-1] in "اىيی" or (c != n-1 and text[c+1] in "اىيی"):
                     if result[-1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                         if not no_vowel:
                             result += "a"
