@@ -67,7 +67,7 @@ def arabic_to_latin(text, debug=False):
             elif char == "ه" and (c == n-1 or (c != n-1 and text[c+1] == " ")):
                 result += "ah"
 
-            else:
+            elif result:
                 if result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                     if not no_vowel:
                         result += "a"
