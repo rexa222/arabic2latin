@@ -16,22 +16,22 @@ def arabic_to_latin(text: str, debug=False):
     result = ''
     no_vowel = False
     special_case = False
-    for c, char in enumerate(text):
+    for i, char in enumerate(text):
         if special_case:
             special_case = False
             continue
 
         if char in MAPPING:
-            if c == 0 or text[c-1] == " ":
-                if char in "اأ" and text[c+1] in "ىيی":
+            if i == 0 or text[i-1] == " ":
+                if char in "اأ" and text[i+1] in "ىيی":
                     result += "ei"
                     special_case = True
 
-                elif char in "اأ" and text[c+1] in "وؤ":
+                elif char in "اأ" and text[i+1] in "وؤ":
                     result += "ou"
                     special_case = True
 
-                elif char in "ىيی" and text[c+1] in "ؤو":
+                elif char in "ىيی" and text[i+1] in "ؤو":
                     result += "yoo"
                     special_case = True
 
@@ -41,18 +41,18 @@ def arabic_to_latin(text: str, debug=False):
                 else:
                     result += MAPPING[char]
 
-            elif char in "ىيی" and (c != end_index and text[c+1] in MAPPING):
+            elif char in "ىيی" and (i != end_index and text[i+1] in MAPPING):
                 result += "i"
 
             elif char == "و":
-                if (c != end_index and text[c+1] in "اىيی") and (c == end_index - 1 or text[c:].startswith("وا ")):
+                if (i != end_index and text[i+1] in "اىيی") and (i == end_index - 1 or text[i:].startswith("وا ")):
                     if result[-1] == "o":
                         result += "o"
                     else:
                         result += "oo"
                     special_case = True
 
-                elif text[c-1] in "اىيی" or (c != end_index and text[c+1] in "اىيی"):
+                elif text[i-1] in "اىيی" or (i != end_index and text[i+1] in "اىيی"):
                     if result[-1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                         if not no_vowel:
                             result += "a"
@@ -64,12 +64,12 @@ def arabic_to_latin(text: str, debug=False):
                 else:
                     result += MAPPING[char]
 
-            elif char == "ه" and (c == end_index or (c != end_index and text[c+1] == " ")):
+            elif char == "ه" and (i == end_index or (i != end_index and text[i+1] == " ")):
                 result += "ah"
 
             elif result:
                 # handling special case of double ل in اللّه
-                if char == "ل" and (c != end_index and text[c+1] == "ل"):
+                if char == "ل" and (i != end_index and text[i+1] == "ل"):
                     special_case = True
 
                 if result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
@@ -92,8 +92,8 @@ def arabic_to_latin(text: str, debug=False):
         # tashdid:
         elif char == "ّ":
             # prevent occurrence of a letter for more than two times
-            if result[-2:] != MAPPING[text[c-1]] * 2:
-                result += MAPPING[text[c - 1]]
+            if result[-2:] != MAPPING[text[i-1]] * 2:
+                result += MAPPING[text[i - 1]]
 
         # sokoon:
         elif char == "ْ":
@@ -106,7 +106,3 @@ def arabic_to_latin(text: str, debug=False):
             return f"unknown character: {char}"
 
     return result
-
-
-if __name__ == '__main__':
-    print(arabic_to_latin('سيدعبدالله الموسوي', debug=True))
