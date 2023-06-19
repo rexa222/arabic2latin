@@ -11,7 +11,7 @@ MAPPING = {
 VOWELS = ['a', 'e', 'i', 'o', 'u', 'ْ']
 
 
-def arabic_to_latin(text, debug=False):
+def arabic_to_latin(text: str, debug=False):
     n = len(text)
     result = ''
     no_vowel = False
@@ -68,6 +68,10 @@ def arabic_to_latin(text, debug=False):
                 result += "ah"
 
             elif result:
+                # handling special case of double ل in اللّه
+                if char == "ل" and (c != n - 1 and text[c + 1] == "ل"):
+                    special_case = True
+
                 if result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
                     if not no_vowel:
                         result += "a"
@@ -102,3 +106,7 @@ def arabic_to_latin(text, debug=False):
             return f"unknown character: {char}"
 
     return result
+
+
+if __name__ == '__main__':
+    print(arabic_to_latin('سيدعبدالله الموسوي', debug=True))
