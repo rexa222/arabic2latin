@@ -44,25 +44,14 @@ def arabic_to_latin(text: str, debug=False):
             elif char in "ىيی" and (i != end_index and text[i+1] in MAPPING):
                 result += "i"
 
-            elif char == "و":
-                if (i != end_index and text[i+1] in "اىيی") and (i == end_index - 1 or text[i:].startswith("وا ")):
-                    if result[-1] == "o":
-                        result += "o"
-                    else:
-                        result += "oo"
-                    special_case = True
-
-                elif text[i-1] in "اىيی" or (i != end_index and text[i+1] in "اىيی"):
-                    if result[-1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
-                        if not no_vowel:
-                            result += "a"
-                        else:
-                            no_vowel = False
-
-                    result += "v"
-
+            elif char == "و" and (i != end_index and text[i+1] == "ا") and (
+                    i == end_index - 1 or text[i:].startswith("وا ")
+            ):
+                if result[-1] == "o":
+                    result += "o"
                 else:
-                    result += MAPPING[char]
+                    result += "oo"
+                special_case = True
 
             elif char == "ه" and (i == end_index or (i != end_index and text[i+1] == " ")):
                 result += "ah"
@@ -72,11 +61,18 @@ def arabic_to_latin(text: str, debug=False):
                 if char == "ل" and (i != end_index and text[i+1] == "ل"):
                     special_case = True
 
-                if result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS and result[-3:] not in " al" and MAPPING[char] != "y":
+                if (
+                        result[-1] not in VOWELS and MAPPING[char][:1] not in VOWELS
+                        and result[-3:] not in " al" and MAPPING[char] != "y"
+                ):
                     if not no_vowel:
                         result += "a"
                     else:
                         no_vowel = False
+
+                if char == "و" and (text[i - 1] in "اىيی" or (i != end_index and text[i + 1] in "ىيی")):
+                    result += "av"
+                    continue
 
                 # prevent occurrence of a letter for more than two times
                 if not result.endswith(MAPPING[char] * 2):
