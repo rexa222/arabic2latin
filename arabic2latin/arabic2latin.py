@@ -56,6 +56,10 @@ def arabic_to_latin(text: str, debug=False):
             elif char == "ه" and (i == end_index or (i != end_index and text[i+1] == " ")):
                 result += "ah"
 
+            elif (i == end_index or text[i+1] == " ") and char == "ع":
+                if result[-1] == "i":
+                    result += "'"
+
             elif result:
                 # handling special case of double ل in اللّه
                 if char == "ل" and (i != end_index and text[i+1] == "ل"):
