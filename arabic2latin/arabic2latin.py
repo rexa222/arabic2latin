@@ -7,8 +7,8 @@ MAPPING = {
     'ٰ': 'aa', 'َ': 'a', 'ُ': 'o', 'ِ': 'e', 'ٌ': 'on', 'ً': 'an', 'ٍ': 'en', 'ء': '', 'ئ': '\'e'
 }
 
-# vowels and sokoon sign:
-VOWELS = ['a', 'e', 'i', 'o', 'u', 'ْ']
+# vowels:
+VOWELS = ['a', 'e', 'i', 'o', 'u']
 
 
 def arabic_to_latin(text: str, debug=False):
