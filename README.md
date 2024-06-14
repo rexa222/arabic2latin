@@ -1,7 +1,7 @@
 
 # arabic2latin
 
-Convert Arabic characters to their Latin (English) homophone.
+Convert Arabic and Persian (Farsi) characters to their Latin (English) homophone.
 
 
 ## Installation
