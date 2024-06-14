@@ -1,7 +1,7 @@
 
 # arabic2latin
 
-Convert Arabic and Persian (Farsi) characters to their Latin (English) homophone.
+Convert Arabic and Persian (Farsi) characters to their English homophone.
 
 
 ## Installation
@@ -20,13 +20,18 @@ pip install git+https://github.com/rexa222/arabic2latin
 from arabic2latin import arabic_to_latin
 
 arabic_text = "السَّلَامُ عَلَيْكَ"
-converted_text = arabic_to_latin(arabic_text)
+arabic_converted_text = arabic_to_latin(arabic_text)
 
-print(converted_text)
+persian_text = "سلام بر همگی"
+persian__converted_text = arabic_to_latin(persian_text)
+
+print("Arbic converted text: " + converted_text)
+print("Persian converted text: " + converted_text)
 ```
 Output:
 ```text
-alsaalaamo aalayka
+Arbic converted text: alsaalaamo aalayka
+Persian converted text: salam bar hamagy
 ```
 ## Debug Mode
 If you came across a character that was not converted, you can find it using debug feature and report it as guided in the contributing section.
