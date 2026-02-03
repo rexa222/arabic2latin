@@ -23,10 +23,10 @@ arabic_text = "السَّلَامُ عَلَيْكَ"
 arabic_converted_text = arabic_to_latin(arabic_text)
 
 persian_text = "سلام بر همگی"
-persian__converted_text = arabic_to_latin(persian_text)
+persian_converted_text = arabic_to_latin(persian_text)
 
-print("Arbic converted text: " + converted_text)
-print("Persian converted text: " + converted_text)
+print("Arbic converted text: " + arabic_converted_text)
+print("Persian converted text: " + persian_converted_text)
 ```
 Output:
 ```text
